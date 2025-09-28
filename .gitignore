@@ -1,0 +1,40 @@
+# Ignore Python cache and environments
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore datasets and models
+data/
+datasets/
+models/
+My/
+C/
+*.h5
+*.pth
+*.pt
+*.ckpt
+
+# Ignore logs and outputs
+logs/
+checkpoints/
+
+# Ignore archives
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Ignore VS Code / system files
+.vscode/
+.DS_Store
+Thumbs.db
+
+
+
+allfiles.txt
