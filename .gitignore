@@ -13,6 +13,7 @@ __pycache__/
 data/
 datasets/
 models/
+models/
 My/
 C/
 *.h5
