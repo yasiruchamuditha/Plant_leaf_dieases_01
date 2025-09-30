@@ -1,4 +1,6 @@
 
+---
+
 title: Plant Disease Detection Demoemoji: 🌱colorFrom: greencolorTo: bluesdk: gradiosdk_version: 4.44.0app_file: app.pypinned: false
 🌱 Plant Disease Detection System
 A deep learning solution for detecting diseases in plant leaves using computer vision. This project implements multiple models to classify plant diseases from leaf images, deployed as an interactive web app using Gradio on Hugging Face Spaces.
@@ -186,3 +188,7 @@ Hugging Face Space: Plant_Leaf_Dieases_Demo
 
 
 ⭐ Star this repository if you find it helpful!
+
+---
+
+Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
