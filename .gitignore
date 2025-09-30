@@ -17,7 +17,7 @@ datasets/
 My/
 C/
 combined_dataset/
-*.h5
+# *.h5
 *.pth
 *.pt
 *.ckpt
