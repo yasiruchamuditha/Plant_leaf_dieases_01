@@ -123,7 +123,7 @@ The app provides:
 - Real-time disease prediction
 - Confidence scores and top-3 predictions
 - Interactive user interface
-# This is only for locally testing purposes only.Application is hosted with hugging face for production
+### This is only for locally testing purposes only.Application is hosted with hugging face for production
 
 ### 3. Command Line Prediction
 
@@ -229,7 +229,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-### Yasiruwan Chamuditha
+### Yasiru Chamuditha
 
 - GitHub: [@yasiruchamuditha](https://github.com/yasiruchamuditha)
 - Project Link: [https://github.com/yasiruchamuditha/Plant_leaf_dieases_01](https://github.com/yasiruchamuditha/Plant_leaf_dieases_01)
