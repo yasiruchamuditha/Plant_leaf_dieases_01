@@ -98,7 +98,7 @@ kagglehub>=0.3.0
 Run the Jupyter notebook to train all models:
 
 ```bash
-jupyter notebook 04_copy.ipynb
+jupyter notebook train.ipynb
 ```
 
 Execute all cells in sequence to:
@@ -123,6 +123,7 @@ The app provides:
 - Real-time disease prediction
 - Confidence scores and top-3 predictions
 - Interactive user interface
+# This is only for locally testing purposes only.Application is hosted with hugging face for production
 
 ### 3. Command Line Prediction
 
@@ -152,7 +153,7 @@ print(f"Confidence: {confidence:.2f}%")
 
 ```text
 Plant_leaf_dieases_01/
-├── 05.ipynb              # Main training notebook
+├── train.ipynb              # Main training notebook
 ├── app.py           # Web application
 ├── README.md                  # Project documentation
 ├── requirements.txt           # Dependencies
@@ -174,8 +175,8 @@ Plant_leaf_dieases_01/
 
 | Model | Test Accuracy | Parameters | Inference Time |
 |-------|--------------|------------|---------------|
-| Custom CNN | 87.5% | 2.1M | 15ms |
-| MobileNetV2 | 92.3% | 3.5M | 12ms |
+| Custom CNN | 81.3% | 2.1M | 15ms |
+| MobileNetV2 | 93.38% | 3.5M | 12ms |
 | ResNet50 | 94.7% | 25.6M | 25ms |
 
 *EfficientNet performance with random weights (fallback mode)
