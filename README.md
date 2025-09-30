@@ -126,7 +126,7 @@ Plant_leaf_dieases_01/
 ├── README.md                 # This file
 ├── requirements.txt          # Dependencies
 ├── .gitattributes            # Git LFS tracking
-├── .gitignore               # Ignore rules
+├── .gitignore                # Ignore rules
 └── models/
     ├── cnn_model.h5
     ├── mobilenet_model.h5
@@ -162,7 +162,7 @@ ResNet50
 ~25ms
 
 
-Note: Performance metrics from 05.ipynb (update with actual results).
+Note: Update with actual metrics from 05.ipynb.
 🔧 Troubleshooting
 
 FileNotFoundError: Ensure models/ contains .h5 files and class_indices.json.
