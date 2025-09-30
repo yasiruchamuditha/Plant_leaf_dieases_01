@@ -18,7 +18,7 @@ st.markdown("")
 
 st.markdown("""        
         **Supported Plants:**
-        Apple, Blueberry, Cherry, Corn (Maize), Grape, Orange, Peach,Pepper (Bell), Potato, Raspberry, Soybean, Squash, Strawberry, Tomato
+        Apple, Blueberry, Cherry, Corn (Maize), Grape, Orange, Peach, Pepper (Bell), Potato, Raspberry, Soybean, Squash, Strawberry, Tomato
         """)
 
 
@@ -107,8 +107,14 @@ def main():
             with st.spinner("Analyzing image..."):
                 processed_img = preprocess_image(image)
                 predictions = model.predict(processed_img)
+                
+                # Validate predictions
+                if np.any(np.isnan(predictions)) or np.any(np.isinf(predictions)):
+                    st.error("Model predictions contain NaN or infinite values.")
+                    return
+                
                 predicted_class_idx = np.argmax(predictions[0])
-                confidence = predictions[0][predicted_class_idx] * 100
+                confidence = float(predictions[0][predicted_class_idx]) * 100  # Convert to percentage
                 predicted_class = class_names[predicted_class_idx]
 
             # Display results
@@ -121,9 +127,13 @@ def main():
 
             for i, idx in enumerate(top_3_idx):
                 class_name = class_names[idx]
-                prob = predictions[0][idx] * 100
+                prob = float(predictions[0][idx]) * 100  # Convert to percentage
                 st.write(f"{i+1}. **{class_name}** - {prob:.2f}%")
-                st.progress(prob/100)
+                progress_value = float(prob / 100)  # Convert to 0-1 range for st.progress
+                if 0 <= progress_value <= 1:
+                    st.progress(progress_value)
+                else:
+                    st.warning(f"Invalid progress value for {class_name}: {progress_value}")
 
 
 
@@ -158,8 +168,14 @@ def main():
                         model_path = model_options[model_name]
                         model_cmp = load_model(model_path)
                         preds = model_cmp.predict(processed_img)
+                        
+                        # Validate predictions
+                        if np.any(np.isnan(preds)) or np.any(np.isinf(preds)):
+                            st.error(f"Model {model_name} predictions contain NaN or infinite values.")
+                            continue
+                        
                         pred_idx = np.argmax(preds[0])
-                        confidence = preds[0][pred_idx] * 100
+                        confidence = float(preds[0][pred_idx]) * 100
                         pred_class = class_names[pred_idx]
 
                         with [col1, col2][i]:
@@ -172,8 +188,14 @@ def main():
                 for i, (model_name, model_path) in enumerate(model_options.items()):
                     model_cmp = load_model(model_path)
                     preds = model_cmp.predict(processed_img)
+                    
+                    # Validate predictions
+                    if np.any(np.isnan(preds)) or np.any(np.isinf(preds)):
+                        st.error(f"Model {model_name} predictions contain NaN or infinite values.")
+                        continue
+                    
                     pred_idx = np.argmax(preds[0])
-                    confidence = preds[0][pred_idx] * 100
+                    confidence = float(preds[0][pred_idx]) * 100
                     pred_class = class_names[pred_idx]
 
                     with cols[i]:
