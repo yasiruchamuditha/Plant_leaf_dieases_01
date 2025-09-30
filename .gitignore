@@ -12,8 +12,8 @@ __pycache__/
 # Ignore datasets and models
 data/
 datasets/
-models/
-models/
+# models/
+# models/
 My/
 C/
 combined_dataset/
