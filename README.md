@@ -40,13 +40,7 @@ This project uses deep learning to identify plant diseases from leaf images, hel
 - Mobile-optimized architecture
 - Excellent balance of accuracy and speed
 
-### 3. EfficientNet B0
-
-- State-of-the-art efficient architecture
-- Fallback mechanism for corrupted weights
-- High performance with fewer parameters
-
-### 4. ResNet50
+### 3. ResNet50
 
 - Deep residual learning
 - Pre-trained weights with fine-tuning
@@ -158,8 +152,8 @@ print(f"Confidence: {confidence:.2f}%")
 
 ```text
 Plant_leaf_dieases_01/
-├── 04_copy.ipynb              # Main training notebook
-├── streamlit_app.py           # Web application
+├── 05.ipynb              # Main training notebook
+├── app.py           # Web application
 ├── README.md                  # Project documentation
 ├── requirements.txt           # Dependencies
 ├── .gitignore                # Git ignore rules
@@ -170,7 +164,6 @@ Plant_leaf_dieases_01/
 ├── models/                   # Trained models (auto-generated)
 │   ├── cnn_model.h5
 │   ├── mobilenet_model.h5
-│   ├── efficientnet_model.h5
 │   ├── resnet50_model.h5
 │   └── class_indices.json
 └── datasets/                 # Raw dataset cache
@@ -183,7 +176,6 @@ Plant_leaf_dieases_01/
 |-------|--------------|------------|---------------|
 | Custom CNN | 87.5% | 2.1M | 15ms |
 | MobileNetV2 | 92.3% | 3.5M | 12ms |
-| EfficientNet B0 | 89.1%* | 5.3M | 18ms |
 | ResNet50 | 94.7% | 25.6M | 25ms |
 
 *EfficientNet performance with random weights (fallback mode)
@@ -234,14 +226,7 @@ ConnectionError: Failed to download dataset
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
-
-- **PlantVillage Dataset**: For providing the comprehensive plant disease dataset
-- **TensorFlow Team**: For the excellent deep learning framework
-- **Streamlit**: For the intuitive web app framework
-- **Kaggle**: For hosting the dataset and providing compute resources
-
-## 📞 Contact
+## Contact
 
 ### Yasiruwan Chamuditha
 
