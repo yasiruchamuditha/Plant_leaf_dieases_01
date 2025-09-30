@@ -1,71 +1,58 @@
-# 🌱 Plant Disease Detection System
 
-A comprehensive deep learning solution for detecting diseases in plant leaves using computer vision and neural networks. This project implements multiple state-of-the-art models to classify plant diseases from leaf images.
+title: Plant Disease Detection Demoemoji: 🌱colorFrom: greencolorTo: bluesdk: gradiosdk_version: 4.44.0app_file: app.pypinned: false
+🌱 Plant Disease Detection System
+A deep learning solution for detecting diseases in plant leaves using computer vision. This project implements multiple models to classify plant diseases from leaf images, deployed as an interactive web app using Gradio on Hugging Face Spaces.
 
-![Python](https://img.shields.io/badge/python-v3.8+-blue.svg)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-v2.15+-orange.svg)
-![Streamlit](https://img.shields.io/badge/Streamlit-v1.28+-red.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
+🎯 Project Overview
+This project uses deep learning to identify plant diseases from leaf images, supporting agricultural applications. The system supports 14 plant types and various disease categories, trained on the PlantVillage dataset.
+🔍 Supported Plants and Diseases
 
-## 🎯 Project Overview
+Apple: Apple Scab, Black Rot, Cedar Apple Rust, Healthy
+Blueberry: Healthy
+Cherry: Powdery Mildew, Healthy
+Corn (Maize): Cercospora Leaf Spot, Common Rust, Northern Leaf Blight, Healthy
+Grape: Black Rot, Esca (Black Measles), Leaf Blight, Healthy
+Orange: Haunglongbing (Citrus Greening)
+Peach: Bacterial Spot, Healthy
+Pepper (Bell): Bacterial Spot, Healthy
+Potato: Early Blight, Late Blight, Healthy
+Raspberry: Healthy
+Soybean: Healthy
+Squash: Powdery Mildew
+Strawberry: Leaf Scorch, Healthy
+Tomato: Bacterial Spot, Early Blight, Late Blight, Leaf Mold, Septoria Leaf Spot, Spider Mites, Target Spot, Yellow Leaf Curl Virus, Mosaic Virus, Healthy
 
-This project uses deep learning to identify plant diseases from leaf images, helping farmers and agricultural professionals make informed decisions about crop health. The system supports multiple plant types including tomatoes, potatoes, and peppers.
+🚀 Features
 
-### 🔍 Supported Plant Diseases
+Multiple Models: Custom CNN, MobileNetV2, ResNet50
+Web Interface: Gradio app for image upload, model selection, and comparison
+Real-time Predictions: Displays predictions with confidence scores and top-3 results
+Model Comparison: Compare outputs from 2 or 3 models
+Robust Error Handling: Handles missing models or files gracefully
+Preprocessing: Image resizing and normalization
 
-- **Pepper Bell**: Bacterial Spot, Healthy
-- **Potato**: Early Blight, Late Blight, Healthy  
-- **Tomato**: Bacterial Spot, Early Blight, Late Blight, Leaf Mold, Septoria Leaf Spot, Spider Mites, Target Spot, Yellow Leaf Curl Virus, Mosaic Virus, Healthy
+🏗️ Model Architectures
 
-## 🚀 Features
+Custom CNN: Built with L2 regularization and batch normalization, optimized for plant disease classification.
+MobileNetV2: Pre-trained on ImageNet, fine-tuned for efficiency and accuracy.
+ResNet50: Pre-trained with fine-tuning, leveraging residual connections for robust performance.
 
-- **Multiple Model Architectures**: CNN, MobileNetV2, EfficientNet, ResNet50
-- **High Accuracy**: Achieves 90%+ accuracy on test data
-- **Web Interface**: Interactive Streamlit app for easy deployment
-- **Real-time Predictions**: Fast inference with confidence scores
-- **Robust Error Handling**: Graceful fallbacks for model loading issues
-- **Data Augmentation**: Advanced image preprocessing techniques
+📊 Dataset
 
-## 🏗️ Model Architectures
+Source: PlantVillage Dataset (via Kaggle)
+Images: ~54,000 leaf images
+Classes: Multiple disease categories across 14 plants
+Split: 70% Training, 20% Validation, 10% Testing
+Resolution: 224x224 pixels
 
-### 1. Custom CNN
+🛠️ Installation
+Prerequisites
 
-- L2 regularization and batch normalization
-- Optimized for plant disease classification
-- Lightweight and fast inference
+Python >= 3.10
+Git
+Hugging Face account for Spaces deployment
 
-### 2. MobileNetV2
-
-- Pre-trained on ImageNet
-- Mobile-optimized architecture
-- Excellent balance of accuracy and speed
-
-### 3. ResNet50
-
-- Deep residual learning
-- Pre-trained weights with fine-tuning
-- Robust performance across diverse conditions
-
-## 📊 Dataset
-
-- **Source**: PlantVillage Dataset (Kaggle)
-- **Images**: ~54,000+ plant leaf images
-- **Classes**: 16 different plant disease categories
-- **Split**: 70% Training, 20% Validation, 10% Testing
-- **Resolution**: 224x224 pixels (standardized)
-
-## 🛠️ Installation
-
-### Prerequisites
-
-```bash
-python >= 3.8
-pip >= 21.0
-```
-
-### Setup Environment
-
-```bash
+Setup
 # Clone the repository
 git clone https://github.com/yasiruchamuditha/Plant_leaf_dieases_01.git
 cd Plant_leaf_dieases_01
@@ -76,174 +63,126 @@ source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
-```
 
-### Dependencies
+Dependencies (requirements.txt)
+gradio==4.44.0
+tensorflow==2.16.2
+numpy==1.26.4
+pillow==10.4.0
 
-```txt
-tensorflow>=2.15.0
-streamlit>=1.28.0
-scikit-learn>=1.3.0
-matplotlib>=3.5.0
-seaborn>=0.11.0
-numpy>=1.21.0
-pillow>=8.0.0
-kagglehub>=0.3.0
-```
+🎮 Usage
+1. Training Models
+Run the Jupyter notebook to train models:
+jupyter notebook 05.ipynb
 
-## 🎮 Usage
 
-### 1. Training Models
+Downloads PlantVillage dataset via kagglehub
+Trains Custom CNN, MobileNetV2, and ResNet50
+Evaluates performance (accuracy, precision, recall, F1-score)
+Saves models to models/
 
-Run the Jupyter notebook to train all models:
+2. Web Application
+Launch locally (for testing):
+python app.py
 
-```bash
-jupyter notebook 04_copy.ipynb
-```
+Or access the deployed app at: Hugging Face Space
+Features:
 
-Execute all cells in sequence to:
+Upload a leaf image (JPG/PNG)
+Select a model (CNN, MobileNetV2, ResNet50)
+View predictions, confidence, and top-3 results
+Compare predictions across models
 
-- Download and prepare the dataset
-- Train multiple model architectures
-- Evaluate performance on test data
-- Save trained models
-
-### 2. Web Application
-
-Launch the Streamlit web interface:
-
-```bash
-streamlit run streamlit_app.py
-```
-
-The app provides:
-
-- Model selection dropdown
-- Image upload functionality
-- Real-time disease prediction
-- Confidence scores and top-3 predictions
-- Interactive user interface
-
-### 3. Command Line Prediction
-
-```python
+3. Command Line Prediction
 import tensorflow as tf
 from PIL import Image
 import numpy as np
+import json
+
+# Load class indices
+with open('models/class_indices.json', 'r') as f:
+    class_indices = json.load(f)
+class_names = {v: k for k, v in class_indices.items()}
 
 # Load model
-model = tf.keras.models.load_model('models/resnet50_model.h5')
+model = tf.keras.models.load_model('models/resnet_model.h5')
 
 # Preprocess image
 image = Image.open('path/to/leaf_image.jpg').resize((224, 224))
 img_array = np.array(image) / 255.0
 img_array = np.expand_dims(img_array, axis=0)
 
-# Make prediction
+# Predict
 prediction = model.predict(img_array)
-predicted_class = np.argmax(prediction)
-confidence = np.max(prediction) * 100
-
+predicted_class = class_names[np.argmax(prediction[0])]
+confidence = np.max(prediction[0]) * 100
 print(f"Predicted class: {predicted_class}")
 print(f"Confidence: {confidence:.2f}%")
-```
 
-## 📁 Project Structure
-
-```text
+📁 Project Structure
 Plant_leaf_dieases_01/
-├── 05.ipynb              # Main training notebook
-├── app.py           # Web application
-├── README.md                  # Project documentation
-├── requirements.txt           # Dependencies
-├── .gitignore                # Git ignore rules
-├── data/                     # Dataset (auto-generated)
-│   ├── train/               # Training images
-│   ├── val/                 # Validation images
-│   └── test/                # Test images
-├── models/                   # Trained models (auto-generated)
-│   ├── cnn_model.h5
-│   ├── mobilenet_model.h5
-│   ├── resnet50_model.h5
-│   └── class_indices.json
-└── datasets/                 # Raw dataset cache
-    └── emmarex/
-```
+├── app.py                    # Gradio web app
+├── 05.ipynb                  # Training and evaluation notebook
+├── README.md                 # This file
+├── requirements.txt          # Dependencies
+├── .gitattributes            # Git LFS tracking
+├── .gitignore               # Ignore rules
+└── models/
+    ├── cnn_model.h5
+    ├── mobilenet_model.h5
+    ├── resnet_model.h5
+    ├── class_indices.json
 
-## 🎯 Model Performance
+🎯 Model Performance
 
-| Model | Test Accuracy | Parameters | Inference Time |
-|-------|--------------|------------|---------------|
-| Custom CNN | 87.5% | 2.1M | 15ms |
-| MobileNetV2 | 92.3% | 3.5M | 12ms |
-| ResNet50 | 94.7% | 25.6M | 25ms |
 
-*EfficientNet performance with random weights (fallback mode)
 
-## 🔧 Troubleshooting
+Model
+Test Accuracy
+Parameters
+Inference Time
 
-### Common Issues
 
-#### 1. EfficientNet Shape Mismatch Error
 
-```text
-ValueError: Shape mismatch in layer #1 (named stem_conv)
-```
+Custom CNN
+~87.5%
+~2.1M
+~15ms
 
-**Solution**: The notebook automatically handles this with a fallback to random weights.
 
-#### 2. Out of Memory Error
+MobileNetV2
+~92.3%
+~3.5M
+~12ms
 
-```text
-ResourceExhaustedError: OOM when allocating tensor
-```
 
-**Solution**: Reduce batch size in the notebook or use a machine with more RAM/GPU memory.
+ResNet50
+~94.7%
+~25.6M
+~25ms
 
-#### 3. Dataset Download Issues
 
-```text
-ConnectionError: Failed to download dataset
-```
+Note: Performance metrics from 05.ipynb (update with actual results).
+🔧 Troubleshooting
 
-**Solution**: Check internet connection and Kaggle API credentials.
+FileNotFoundError: Ensure models/ contains .h5 files and class_indices.json.
+Build Fails on Spaces: Check logs in Space Settings; verify requirements.txt and file paths.
+Slow Load: Normal for TensorFlow models on free tier (cold start).
 
-### Performance Optimization
+🤝 Contributing
 
-- **GPU Training**: Use CUDA-enabled TensorFlow for faster training
-- **Mixed Precision**: Enable mixed precision training for better performance
-- **Model Quantization**: Convert models to TensorFlow Lite for mobile deployment
+Fork the repo
+Create a feature branch (git checkout -b feature/new-feature)
+Commit changes (git commit -m 'Add new feature')
+Push to branch (git push origin feature/new-feature)
+Open a Pull Request
 
-## 🤝 Contributing
+📄 License
+MIT License - see LICENSE file.
+📬 Contact
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+GitHub: @yasiruchamuditha
+Hugging Face Space: Plant_Leaf_Dieases_Demo
 
-## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Contact
-
-### Yasiruwan Chamuditha
-
-- GitHub: [@yasiruchamuditha](https://github.com/yasiruchamuditha)
-- Project Link: [https://github.com/yasiruchamuditha/Plant_leaf_dieases_01](https://github.com/yasiruchamuditha/Plant_leaf_dieases_01)
-
----
-
-⭐ **Star this repository if you find it helpful!**
-
-## 🔮 Future Enhancements
-
-- [ ] Mobile app development (iOS/Android)
-- [ ] Integration with agricultural IoT devices
-- [ ] Real-time disease progression tracking
-- [ ] Multi-language support for global adoption
-- [ ] Integration with agricultural databases
-- [ ] Drone-based image capture support
-- [ ] Treatment recommendation system
-- [ ] Weather correlation analysis
+⭐ Star this repository if you find it helpful!
