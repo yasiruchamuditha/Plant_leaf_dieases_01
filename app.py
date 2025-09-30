@@ -18,8 +18,9 @@ st.markdown("")
 
 st.markdown("""        
         **Supported Plants:**
-        Apple, Blueberry, Cherry, Corn (Maize), Grape, Orange, Peach, Pepper (Bell), Potato, Raspberry, Soybean, Squash, Strawberry, Tomato
+        Apple, Blueberry, Cherry, Corn (Maize), Grape, Orange, Peach,Pepper (Bell), Potato, Raspberry, Soybean, Squash, Strawberry, Tomato
         """)
+
 
 # ==============================================================
 # 1. Load Class Indices
@@ -102,36 +103,29 @@ def main():
         with col2:
             st.subheader("🔍 Prediction Results")
 
-            # Make prediction with selected model
+            # Make prediction
             with st.spinner("Analyzing image..."):
                 processed_img = preprocess_image(image)
                 predictions = model.predict(processed_img)
                 predicted_class_idx = np.argmax(predictions[0])
-                confidence = float(predictions[0][predicted_class_idx]) * 100  # Convert to Python float
+                confidence = predictions[0][predicted_class_idx] * 100
                 predicted_class = class_names[predicted_class_idx]
 
-            # Display results for selected model
-            st.success(f"**Prediction ({selected_model}):** {predicted_class}")
+            # Display results
+            st.success(f"**Prediction:** {predicted_class}")
             st.info(f"**Confidence:** {confidence:.2f}%")
-            st.progress(confidence / 100)  # Progress bar for selected model
 
-            # Show predictions from all three models
-            st.subheader("📊 Predictions from All Models")
-            for model_name, model_path in model_options.items():
-                model_cmp = load_model(model_path)
-                if model_cmp is None:
-                    st.error(f"Could not load {model_name}")
-                    continue
-                with st.spinner(f"Predicting with {model_name}..."):
-                    preds = model_cmp.predict(processed_img)
-                    pred_idx = np.argmax(preds[0])
-                    confidence = float(preds[0][pred_idx]) * 100  # Convert to Python float
-                    pred_class = class_names[pred_idx]
-                
-                st.write(f"**{model_name}**")
-                st.write(f"- **Prediction:** {pred_class}")
-                st.write(f"- **Confidence:** {confidence:.2f}%")
-                st.progress(confidence / 100)  # Progress bar for each model
+            # Show top 3 predictions
+            st.subheader("📊 Top 3 Predictions")
+            top_3_idx = np.argsort(predictions[0])[-3:][::-1]
+
+            for i, idx in enumerate(top_3_idx):
+                class_name = class_names[idx]
+                prob = predictions[0][idx] * 100
+                st.write(f"{i+1}. **{class_name}** - {prob:.2f}%")
+                st.progress(prob/100)
+
+
 
     # ==============================================================
     # 5. Model Comparison Section
@@ -165,14 +159,13 @@ def main():
                         model_cmp = load_model(model_path)
                         preds = model_cmp.predict(processed_img)
                         pred_idx = np.argmax(preds[0])
-                        confidence = float(preds[0][pred_idx]) * 100  # Convert to Python float
+                        confidence = preds[0][pred_idx] * 100
                         pred_class = class_names[pred_idx]
 
                         with [col1, col2][i]:
                             st.subheader(model_name)
                             st.write(f"**Prediction:** {pred_class}")
                             st.write(f"**Confidence:** {confidence:.2f}%")
-                            st.progress(confidence / 100)  # Progress bar
 
             elif comparison_mode == "Model 1 vs Model 2 vs Model 3":
                 cols = st.columns(3)
@@ -180,14 +173,13 @@ def main():
                     model_cmp = load_model(model_path)
                     preds = model_cmp.predict(processed_img)
                     pred_idx = np.argmax(preds[0])
-                    confidence = float(preds[0][pred_idx]) * 100  # Convert to Python float
+                    confidence = preds[0][pred_idx] * 100
                     pred_class = class_names[pred_idx]
 
                     with cols[i]:
                         st.subheader(model_name)
                         st.write(f"**Prediction:** {pred_class}")
                         st.write(f"**Confidence:** {confidence:.2f}%")
-                        st.progress(confidence / 100)  # Progress bar
 
     # ==============================================================
     # 6. About Section
